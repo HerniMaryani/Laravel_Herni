@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('asal_sma', 50);
             $table->string('foto', 50);
             $table->uuid('prodi_id');
-            $table->foreign('prodi_id')->references('id')->on('prodi')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('prodi_id')->references('id')->on('prodis')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }
