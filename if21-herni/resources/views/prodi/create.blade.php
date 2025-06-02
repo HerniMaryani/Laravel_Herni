@@ -1,4 +1,3 @@
-
 @extends('main')
 
 @section('title', 'Program Studi')
