@@ -3,10 +3,10 @@
   <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE 4 | @yield('title')</title>
+    <title>AdminLTE 4 | Sidebar Mini</title>
     <!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="title" content="AdminLTE 4 | Unfixed Sidebar" />
+    <meta name="title" content="AdminLTE 4 | Sidebar Mini" />
     <meta name="author" content="ColorlibHQ" />
     <meta
       name="description"
@@ -42,12 +42,12 @@
     />
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.css') }}" />
+    <link rel="stylesheet" href="../../../dist/css/adminlte.css" />
     <!--end::Required Plugin(AdminLTE)-->
   </head>
   <!--end::Head-->
   <!--begin::Body-->
-  <body class="sidebar-expand-lg bg-body-tertiary">
+  <body class="layout-fixed sidebar-expand-lg sidebar-mini bg-body-tertiary">
     <!--begin::App Wrapper-->
     <div class="app-wrapper">
       <!--begin::Header-->
@@ -86,7 +86,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="{{ asset('dist/assets/img/user1-128x128.jpg') }}" 
+                        src="../../../dist/assets/img/user1-128x128.jpg"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />
@@ -112,7 +112,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="{{ asset('dist/assets/img/user8-128x128.jpg')}}"
+                        src="../../../dist/assets/img/user8-128x128.jpg"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />
@@ -138,7 +138,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="{{ asset('dist/assets/img/user3-128x128.jpg')}}"
+                        src="../../../dist/assets/img/user3-128x128.jpg"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />
@@ -213,7 +213,7 @@
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
                   <img
-                    src="{{ asset('dist/assets/img/user2-160x160.jpg')}}"
+                    src="../../../dist/assets/img/user2-160x160.jpg"
                     class="rounded-circle shadow"
                     alt="User Image"
                   />
@@ -254,21 +254,25 @@
         <!--begin::Sidebar Brand-->
         <div class="sidebar-brand">
           <!--begin::Brand Link-->
-          <a class='brand-link' href='/dist/pages/'>
-            <!--begin::Brand Image-->
+          <a href="../index.html" class="brand-link logo-switch">
+            <!--begin::Brand Image Small-->
             <img
-              src="{{ asset('dist/assets/img/AdminLTELogo.png')}}"
-              alt="AdminLTE Logo"
-              class="brand-image opacity-75 shadow"
+              src="../../../dist/assets/img/AdminLTELogo.png"
+              alt="AdminLTE Logo Small"
+              class="brand-image-xl logo-xs opacity-75 shadow"
             />
-            <!--end::Brand Image-->
-            <!--begin::Brand Text-->
-            <span class="brand-text fw-light">AdminLTE 4</span>
-            <!--end::Brand Text-->
+            <!--end::Brand Image Small-->
+            <!--begin::Brand Image Large-->
+            <img
+              src="../../../dist/assets/img/AdminLTEFullLogo.png"
+              alt="AdminLTE Logo Large"
+              class="brand-image-xs logo-xl opacity-75"
+            />
+            <!--end::Brand Image Large-->
           </a>
           <!--end::Brand Link-->
         </div>
-        <!--end::Sidebar Brand-->
+        <!-- Sidebar -->
         <!--begin::Sidebar Wrapper-->
         <div class="sidebar-wrapper">
           <nav class="mt-2">
@@ -279,28 +283,69 @@
               role="menu"
               data-accordion="false"
             >
+              <li class="nav-header">MULTI LEVEL EXAMPLE</li>
               <li class="nav-item">
-                <a href="{{ url('/dashboard') }}" class="nav-link">
-                  <i class="nav-icon bi bi-speedometer"></i>
-                  <p>Dashboard</p>
+                <a href="#" class="nav-link">
+                  <i class="nav-icon bi bi-circle-fill"></i>
+                  <p>Level 1</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a class='nav-link' href='{{ route('fakultas.index') }}'>
-                  <i class="nav-icon bi bi-map"></i>
-                  <p>Fakultas</p>
+                <a href="#" class="nav-link">
+                  <i class="nav-icon bi bi-circle-fill"></i>
+                  <p>
+                    Level 1
+                    <i class="nav-arrow bi bi-chevron-right"></i>
+                  </p>
                 </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Level 2</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>
+                        Level 2
+                        <i class="nav-arrow bi bi-chevron-right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="nav-icon bi bi-record-circle-fill"></i>
+                          <p>Level 3</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="nav-icon bi bi-record-circle-fill"></i>
+                          <p>Level 3</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="nav-icon bi bi-record-circle-fill"></i>
+                          <p>Level 3</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Level 2</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li class="nav-item">
-                <a class='nav-link' href='{{ route('prodi.index') }}'>
-                  <i class="nav-icon bi bi-microsoft"></i>
-                  <p>Program Studi</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class='nav-link' href='{{ route('mahasiswa.index') }}'>
-                  <i class="nav-icon bi bi-people"></i>
-                  <p>Mahasiswa</p>
+                <a href="#" class="nav-link">
+                  <i class="nav-icon bi bi-circle-fill"></i>
+                  <p>Level 1</p>
                 </a>
               </li>
             </ul>
@@ -318,11 +363,11 @@
           <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
-              <div class="col-sm-6"><h3 class="mb-0">@yield('title')</h3></div>
+              <div class="col-sm-6"><h3 class="mb-0">Logo Switch</h3></div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">@yield('title')</li>
+                  <li class="breadcrumb-item active" aria-current="page">Logo Switch</li>
                 </ol>
               </div>
             </div>
@@ -335,8 +380,44 @@
         <div class="app-content">
           <!--begin::Container-->
           <div class="container-fluid">
-          @yield('content')  
+            <!--begin::Row-->
+            <div class="row">
+              <div class="col-12">
+                <!-- Default box -->
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Title</h3>
+                    <div class="card-tools">
+                      <button
+                        type="button"
+                        class="btn btn-tool"
+                        data-lte-toggle="card-collapse"
+                        title="Collapse"
+                      >
+                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-tool"
+                        data-lte-toggle="card-remove"
+                        title="Remove"
+                      >
+                        <i class="bi bi-x-lg"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="card-body">Start creating your amazing application!</div>
+                  <!-- /.card-body -->
+                  <div class="card-footer">Footer</div>
+                  <!-- /.card-footer-->
+                </div>
+                <!-- /.card -->
+              </div>
+            </div>
+            <!--begin::Row-->
           </div>
+          <!--end::Container-->
         </div>
         <!--end::App Content-->
       </main>
@@ -348,7 +429,7 @@
         <!--end::To the end-->
         <!--begin::Copyright-->
         <strong>
-          Copyright &copy; 2014-2025&nbsp;
+          Copyright &copy; 2014-2024&nbsp;
           <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
         </strong>
         All rights reserved.
@@ -400,44 +481,6 @@
       });
     </script>
     <!--end::OverlayScrollbars Configure-->
-    {{-- jquery cdn --}}
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
-    {{-- swal --}}
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script> --}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script type="text/javascript">
-        $('.show_confirm').click(function(event) {
-            var form = $(this).closest("form");
-            var nama = $(this).data("nama");
-            event.preventDefault();
-            
-            // swal({
-            Swal.fire({
-                    title: `Apakah Anda yakin ingin menghapus data ${nama} ini?`,
-                    text: "If you delete this, it will be gone forever.",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        form.submit();
-                    }
-                });
-        });
-    </script>
-
-    @session('success')
-    <script>
-      Swal.fire({
-        title: "Good job!",
-        text: " {{ session('success') }} ",
-        icon: "success"
-      });
-      </script>
-    @endsession
     <!--end::Script-->
   </body>
   <!--end::Body-->
