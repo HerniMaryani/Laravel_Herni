@@ -13,7 +13,7 @@ class SesiController extends Controller
     public function index()
     {
          $sesi = Sesi::all();  
-        return view('sesi.index')->with('sesis', $sesi);
+         return view('sesi.index', compact('sesi'));
     
     
     }
@@ -23,7 +23,7 @@ class SesiController extends Controller
      */
     public function create()
     {
-         return view('sesi.create');
+        return view('sesi.create');
     }
 
     /**
@@ -31,10 +31,9 @@ class SesiController extends Controller
      */
     public function store(Request $request)
     {
-              $input = $request->validate([
-            'nama' => 'required|unique:sesi',
-            'created_at' => 'required',
-            'update_at' => 'required',
+            $input = $request->validate([
+            'id' =>'required|unique:sesi',
+            'nama' => 'required',
         ]);
 
         // simpan ke tabel fakultas

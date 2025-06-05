@@ -9,5 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 class Sesi extends Model
 {
     use HasUuids;
-    protected $fillable = ['nama', 'created_at ','updated_at'];
+    protected $table = 'sesis';
+    protected $fillable = ['nama'];
 }

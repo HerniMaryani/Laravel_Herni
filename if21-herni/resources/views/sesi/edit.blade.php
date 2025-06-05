@@ -19,7 +19,7 @@
                     <div class="card-body">
                       <div class="mb-3">
                         <label for="nama" class="form-label">Nama sesi</label>
-                        <input type="text" class="form-control" name="nama" value="{{ old('nama') ? old('nama') : $prodi->nama }}">
+                        <input type="text" class="form-control" name="nama" value="{{ old('nama') ? old('nama') : $sesi->nama }}">
                       </div>
                       </div>
                     </div>
