@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <!--begin::Head-->
@@ -42,7 +43,7 @@
     />
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.css') }}" />
+    <link rel="stylesheet" href="../../../dist/css/adminlte.css" />
     <!--end::Required Plugin(AdminLTE)-->
   </head>
   <!--end::Head-->
@@ -86,7 +87,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="{{ asset('dist/assets/img/user1-128x128.jpg') }}" 
+                        src="../../../dist/assets/img/user1-128x128.jpg"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />
@@ -112,7 +113,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="{{ asset('dist/assets/img/user8-128x128.jpg')}}"
+                        src="../../../dist/assets/img/user8-128x128.jpg"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />
@@ -138,7 +139,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="{{ asset('dist/assets/img/user3-128x128.jpg')}}"
+                        src="../../../dist/assets/img/user3-128x128.jpg"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />
@@ -213,7 +214,7 @@
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
                   <img
-                    src="{{ asset('dist/assets/img/user2-160x160.jpg')}}"
+                    src="../../../dist/assets/img/user2-160x160.jpg"
                     class="rounded-circle shadow"
                     alt="User Image"
                   />
@@ -257,7 +258,7 @@
           <a class='brand-link' href='/dist/pages/'>
             <!--begin::Brand Image-->
             <img
-              src="{{ asset('dist/assets/img/AdminLTELogo.png')}}"
+              src="../../../dist/assets/img/AdminLTELogo.png"
               alt="AdminLTE Logo"
               class="brand-image opacity-75 shadow"
             />
@@ -301,6 +302,12 @@
                 <a class='nav-link' href='{{ route('mahasiswa.index') }}'>
                   <i class="nav-icon bi bi-people"></i>
                   <p>Mahasiswa</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a class='nav-link' href='{{ route('sesi.index') }}'>
+                  <i class="nav-icon bi bi-people"></i>
+                  <p>Sesi</p>
                 </a>
               </li>
             </ul>
