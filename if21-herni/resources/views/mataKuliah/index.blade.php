@@ -31,7 +31,7 @@
             </div>
             </div>
             <div class="card-body">
-                <a href="{{ route('mata_kuliah.create') }}" class="btn btn-sm btn-primary"><i class="bi bi-file-earmark-plus-fill"></i> Tambah</a>
+                <a href="{{ route('prodi.create') }}" class="btn btn-sm btn-primary"><i class="bi bi-file-earmark-plus-fill"></i> Tambah</a>
                 <table class="table">
                     <thead>
                         <tr>
@@ -41,14 +41,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($mata_kuliah as $item)
+                        @foreach ($mataKuliah as $item)
                         <tr>
-                            <td>{{ $item->kode_mk}}</td>
-                            <td>{{ $item->nama}}</td>
-                            <td>{{ $item->prodi->nama }}</td>
+                            <td>{{ $item->kode_mk }}</td>
+                            <td>{{ $item->nama }}</td>
                             <td>
-                                <a href="{{ route('mata_kuliah.edit', $item->id) }}" class="btn btn-sm btn-warning"><i class="bi bi-pencil-fill"></i></a>
-                                <form method="POST" action="{{ route('mata_kuliah.destroy', $item->id) }}" class="d-inline">
+                                <a href="{{ route('mataKuliah.edit', $item->id) }}" class="btn btn-sm btn-warning"><i class="bi bi-pencil-fill"></i></a>
+                                <form method="POST" action="{{ route('mataKuliah.destroy', $item->id) }}" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-danger btn-rounded show_confirm"

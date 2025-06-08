@@ -12,7 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jadwals', function (Blueprint $table) {
-             $table->uuid('id');
+            $table->uuid('id');
+            $table->primary('id');
+            $table->string('tahun_akademik');
+            $table->string('kode_smt');    
+            $table->string('kelas');
+            $table->uuid(' mata_kuliah_id');
+            $table->foreign('mata_kuliah_id')->references('id')->on('mata_kuliahs')->onDelete('restrict')->onUpdate('restrict');
+            $table->uuid('sesi_id');
+            $table->foreign('sesi_id')->references('id')->on('sesis')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }

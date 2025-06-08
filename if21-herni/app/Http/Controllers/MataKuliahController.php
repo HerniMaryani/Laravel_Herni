@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mata_Kuliah;
+use App\Models\MataKuliah;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
 
@@ -13,8 +13,9 @@ class MataKuliahController extends Controller
      */
     public function index()
     {
-        $mata_Kuliah = Mata_Kuliah::all();
-        return view('mata_kuliah.index', compact('mata_kuliah'));
+        
+        $mataKuliah = MataKuliah::all();
+        return view('mataKuliah.index', compact('mataKuliah'));
     }
 
     /**
@@ -22,8 +23,8 @@ class MataKuliahController extends Controller
      */
     public function create()
     {
-        $mata_Kuliah = Mata_Kuliah::all();
-        return view('mata_kuliah.create', compact('prodi'));
+         $prodi = Prodi::all();
+        return view('mataKuliah.create', compact('prodi'));
     }
 
     /**
@@ -32,30 +33,27 @@ class MataKuliahController extends Controller
     public function store(Request $request)
     {
         $input = $request->validate([
+            'kode_mk' => 'required|unique:mata_kuliahs',
             'nama' => 'required',
-            'kode_mk' => 'required|unique:mata_kuliah',
             'prodi_id' => 'required',
         ]);
-         Mata_Kuliah::create($input);
-
-        // redirect ke route fakultas.index
-        return redirect()->route('mata_kuliah.index')
-                         ->with('success', 'Mata Kuliah berhasil disimpan');
+        MataKuliah::create($input);
+        return redirect()->route('mataKuliah.index')->with('success', 'Mata Kuliah created successfully.');
     }
+    
 
     /**
      * Display the specified resource.
      */
-    public function show(Mata_Kuliah $mata_Kuliah)
+    public function show(MataKuliah $mataKuliah)
     {
-        $prodi = Prodi::all();
-        return view('mata_kuliah.edit', compact('mata_kuliah', 'prodi'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Mata_Kuliah $mata_Kuliah)
+    public function edit(MataKuliah $mataKuliah)
     {
         //
     }
@@ -63,24 +61,15 @@ class MataKuliahController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Mata_Kuliah $mata_Kuliah)
+    public function update(Request $request, MataKuliah $mataKuliah)
     {
-        $input = $request->validate([
-            'nama' => 'required',
-            'kode_mk' => 'required|unique:mata_kuliah',
-            'prodi_id' => 'required',
-        ]);
-         $mata_Kuliah->update($input);
-
-        // redirect ke route fakultas.index
-        return redirect()->route('mata_kuliah.index')
-                         ->with('success', 'Mata Kuliah berhasil diubah');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Mata_Kuliah $mata_Kuliah)
+    public function destroy(MataKuliah $mataKuliah)
     {
         //
     }

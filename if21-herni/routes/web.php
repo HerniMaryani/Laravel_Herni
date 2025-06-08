@@ -18,5 +18,5 @@ Route::resource('/fakultas', FakultasController::class);
 Route::resource('/prodi', ProdiController::class);
 Route::resource('/mahasiswa', MahasiswaController::class);
 Route::resource('/sesi', SesiController::class);
-Route::resource('/mata_kuliah', MataKuliahController::class);
+Route::resource('/mataKuliah', MataKuliahController::class);
 Route::get('/dashboard', [DashboardController::class, 'index']);

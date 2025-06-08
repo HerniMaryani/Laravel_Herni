@@ -5,31 +5,23 @@
     <!--begin::Row-->
     <div class="row">
         <div class="col-12">
-            {{-- form tambah MK --}}
+            {{-- form tambah Mata Kuliah --}}
             <div class="card card-primary card-outline mb-4">
                   <!--begin::Header-->
                   <div class="card-header"><div class="card-title">Form Tambah Mata Kuliah</div></div>
                   <!--end::Header-->
                   <!--begin::Form-->
-                  <form action="{{ route('mata_kuliah.store') }}" method="POST">
+                  <form action="{{ route('mataKuliah.store') }}" method="POST">
                     @csrf
                     <!--begin::Body-->
                     <div class="card-body">
                       <div class="mb-3">
-                        <label for="kode_mk" class="form-label">Kode MK</label>
-                        <input type="text" class="form-control" name="kode_mk">
-                      </div>
-                      <div class="mb-3">
-                        <label for="nama" class="form-label">Nama Mata Kuliah</label>
+                        <label for="nama" class="form-label">kode Mata Kuliah</label>
                         <input type="text" class="form-control" name="nama">
                       </div>
-                      <div class="mb-3">
-                        <label for="prodi_id" class="form-label">prodi</label>
-                        <select name="prodi_id" class="form-control">
-                          @foreach ($prodi as $item)
-                            <option value="{{ $item->id }}"> {{ $item->nama }} </option>
-                          @endforeach
-                        </select>
+                       <div class="mb-3">
+                        <label for="nama" class="form-label">Nama Mata Kuliah</label>
+                        <input type="text" class="form-control" name="nama">
                       </div>
                     </div>
                     <!--end::Body-->

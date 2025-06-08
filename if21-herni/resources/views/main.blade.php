@@ -310,6 +310,12 @@
                   <p>Sesi</p>
                 </a>
               </li>
+               <li class="nav-item">
+                <a class='nav-link' href='{{ route('mataKuliah.index') }}'>
+                  <i class="nav-icon bi bi-people"></i>
+                  <p>Mata Kuliah</p>
+                </a>
+              </li>
             </ul>
             <!--end::Sidebar Menu-->
           </nav>
