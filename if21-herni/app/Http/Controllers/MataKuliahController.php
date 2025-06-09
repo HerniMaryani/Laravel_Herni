@@ -32,9 +32,10 @@ class MataKuliahController extends Controller
      */
     public function store(Request $request)
     {
+        
         $input = $request->validate([
-            'kode_mk' => 'required|unique:mata_kuliahs',
-            'nama' => 'required',
+            'kode_mk' => 'required',
+            'nama' => 'required|unique:mata_kuliahs',
             'prodi_id' => 'required',
         ]);
 
@@ -58,7 +59,6 @@ class MataKuliahController extends Controller
     public function edit(MataKuliah $mataKuliah)
     {
         $mataKuliah = MataKuliah::findOrFail($mataKuliah);
-
         return view('matakuliah.edit', compact('mataKuliah'));
     }
 
@@ -83,7 +83,7 @@ class MataKuliahController extends Controller
      */
     public function destroy(MataKuliah $mataKuliah)
     {
-        $mataKuliah = MataKuliah::findOrFail($mataKuliah);
+        
         $mataKuliah->delete();
         return redirect()->route('mataKuliah.index')->with('success', 'Mata Kuliah berhasil di hapus.');
     }

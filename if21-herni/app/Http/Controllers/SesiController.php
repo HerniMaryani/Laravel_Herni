@@ -34,10 +34,7 @@ class SesiController extends Controller
              'nama' => 'required|unique:sesis',
         ]);
 
-        // simpan ke tabel fakultas
         Sesi::create($input);
-
-        // redirect ke route fakultas.index
         return redirect()->route('sesi.index')
                          ->with('success', 'Sesi berhasil disimpan');
     }
@@ -72,10 +69,8 @@ class SesiController extends Controller
            'nama' => 'required|unique:sesi',
         ]);
 
-        // ubah data fakultas
+        
         $sesi->update($input);
-
-        // redirect ke route fakultas.index
         return redirect()->route('sesi.index')
                          ->with('success', 'Sesi berhasil diubah');
     
@@ -87,13 +82,8 @@ class SesiController extends Controller
      */
     public function destroy(Sesi $sesi)
     {
-         $sesi = Sesi::findOrFail($sesi);
-        // dd($fakultas);
-        
-        // hapus data fakultas
+    
         $sesi->delete();
-
-        // redirect ke route fakultas.index
         return redirect()->route('sesi.index')->with('success', 'Sesi berhasil di hapus.');
     }
 }

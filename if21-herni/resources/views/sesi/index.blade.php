@@ -36,6 +36,7 @@
                     <thead>
                         <tr>
                             <th>Nama sesi</th>
+                            <th>Program Studi</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -43,6 +44,7 @@
                         @foreach ($sesi as $item)
                         <tr>
                             <td>{{ $item->nama }}</td>
+                            <td>{{ $item->prodi->nama }}</td>
                             <td>
                                 <a href="{{ route('sesi.edit', $item->id) }}" class="btn btn-sm btn-warning"><i class="bi bi-pencil-fill"></i></a>
                                 <form method="POST" action="{{ route('sesi.destroy', $item->id) }}" class="d-inline">
