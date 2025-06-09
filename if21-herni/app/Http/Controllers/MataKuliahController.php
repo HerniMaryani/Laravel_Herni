@@ -37,6 +37,7 @@ class MataKuliahController extends Controller
             'nama' => 'required',
             'prodi_id' => 'required',
         ]);
+
         MataKuliah::create($input);
         return redirect()->route('mataKuliah.index')->with('success', 'Mata Kuliah created successfully.');
     }
@@ -47,7 +48,8 @@ class MataKuliahController extends Controller
      */
     public function show(MataKuliah $mataKuliah)
     {
-        //
+         $prodi = Prodi::all();
+        return view('mataKuliah.edit', compact('mataKuliah', 'prodi'));
     }
 
     /**
@@ -55,7 +57,9 @@ class MataKuliahController extends Controller
      */
     public function edit(MataKuliah $mataKuliah)
     {
-        //
+        $mataKuliah = MataKuliah::findOrFail($mataKuliah);
+
+        return view('matakuliah.edit', compact('mataKuliah'));
     }
 
     /**
@@ -63,14 +67,24 @@ class MataKuliahController extends Controller
      */
     public function update(Request $request, MataKuliah $mataKuliah)
     {
-        //
+        $input = $request->validate([
+            'kode_mk' => 'required',
+            'nama' => 'required',
+            'prodi_id' => 'required',
+        ]);
+
+        MataKuliah::update($input);
+        return redirect()->route('mataKuliah.index')->with('success', 'Mata Kuliah berhasil di ubah');
     }
+    
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(MataKuliah $mataKuliah)
     {
-        //
+        $mataKuliah = MataKuliah::findOrFail($mataKuliah);
+        $mataKuliah->delete();
+        return redirect()->route('mataKuliah.index')->with('success', 'Mata Kuliah berhasil di hapus.');
     }
 }

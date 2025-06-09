@@ -42,15 +42,15 @@
                     <tbody>
                         @foreach ($sesi as $item)
                         <tr>
-                            <td>{{ $sesi->nama }}</td>
+                            <td>{{ $item->nama }}</td>
                             <td>
-                                <a href="{{ route('sesi.edit', $sesi->id) }}" class="btn btn-sm btn-warning"><i class="bi bi-pencil-fill"></i></a>
-                                <form method="POST" action="{{ route('sesi.destroy', $sesi->id) }}" class="d-inline">
+                                <a href="{{ route('sesi.edit', $item->id) }}" class="btn btn-sm btn-warning"><i class="bi bi-pencil-fill"></i></a>
+                                <form method="POST" action="{{ route('sesi.destroy', $item->id) }}" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-danger btn-rounded show_confirm"
                                     data-toggle="tooltip" title='Delete'
-                                    data-nama='{{ $sesi->nama }}'><i class="bi bi-trash"></i></button>
+                                    data-nama='{{ $item->nama }}'><i class="bi bi-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

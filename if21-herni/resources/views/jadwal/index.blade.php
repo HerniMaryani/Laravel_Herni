@@ -43,7 +43,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($jadwa as $item)
+                        @foreach ($jadwal as $item)
                         <tr>
                             <td>{{ $item->tahun_akademik }}</td>
                             <td>{{ $item->kode_smt }}</td>

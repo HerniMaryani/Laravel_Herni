@@ -33,17 +33,16 @@ class ProdiController extends Controller
     {
          // validasi input form
         $input = $request->validate([
-            'nama' => 'required',
-            'singkatan' => 'required|unique:prodi',
+            'nama' => 'required|unique:prodis',
+            'singkatan' => 'required',
             'kaprodi' => 'required',
             'sekretaris' => 'required',
             'fakultas_id' => 'required'
         ]);
 
-        // simpan ke tabel fakultas
+
         Prodi::create($input);
 
-        // redirect ke route fakultas.index
         return redirect()->route('prodi.index')
                          ->with('success', 'Program studi berhasil disimpan');
     }
@@ -81,10 +80,7 @@ class ProdiController extends Controller
             'fakultas_id' => 'required'
         ]);
 
-        // simpan ke tabel fakultas
         $prodi->update($input);
-
-        // redirect ke route fakultas.index
         return redirect()->route('prodi.index')
                          ->with('success', 'Program studi berhasil diubah');
     }
@@ -95,12 +91,7 @@ class ProdiController extends Controller
     public function destroy(Prodi $prodi)
     {
         $prodi = Prodi::findOrFail($prodi);
-        // dd($fakultas);
-        
-        // hapus data fakultas
         $prodi->delete();
-
-        // redirect ke route fakultas.index
         return redirect()->route('prodi.index')->with('success', 'Prodi berhasil di hapus.');
     }
 }
