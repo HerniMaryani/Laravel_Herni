@@ -33,8 +33,8 @@ class ProdiController extends Controller
     {
          // validasi input form
         $input = $request->validate([
-            'nama' => 'required|unique:prodi',
-            'singkatan' => 'required',
+            'nama' => 'required',
+            'singkatan' => 'required|unique:prodi',
             'kaprodi' => 'required',
             'sekretaris' => 'required',
             'fakultas_id' => 'required'
@@ -62,7 +62,9 @@ class ProdiController extends Controller
      */
     public function edit(Prodi $prodi)
     {
-        //
+        $prodi = Prodi::findOrFail($prodi);
+
+        return view('prodi.edit', compact('prodi'));
     }
 
     /**
@@ -92,6 +94,13 @@ class ProdiController extends Controller
      */
     public function destroy(Prodi $prodi)
     {
-        //
+        $prodi = Prodi::findOrFail($prodi);
+        // dd($fakultas);
+        
+        // hapus data fakultas
+        $prodi->delete();
+
+        // redirect ke route fakultas.index
+        return redirect()->route('prodi.index')->with('success', 'Prodi berhasil di hapus.');
     }
 }

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dosen;
 use App\Models\Jadwal;
+use App\Models\MataKuliah;
+use App\Models\Sesi;
 use Illuminate\Http\Request;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class JadwalController extends Controller
 {
@@ -12,7 +16,7 @@ class JadwalController extends Controller
      */
     public function index()
     {
-          $jadwal = Jadwal::all();
+        $jadwal = Jadwal::all();
         return view('jadwal.index', compact('jadwal'));
     }
 
@@ -21,7 +25,7 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        //
+         return view('jadwal.create');
     }
 
     /**
@@ -29,7 +33,19 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->validate([
+            'tahun_akademik' => 'required|unique:jadwal',
+            'kode_smt' => 'required',
+            'kelas' => 'required',
+            'mataKuliah_id' => 'required',
+            'dosen_id' => 'required',
+            'sesi_id' => 'required'
+        ]);
+         Jadwal::create($input);
+
+        // redirect ke route fakultas.index
+        return redirect()->route('jadwal.index')
+                         ->with('success', 'Jadwal berhasil disimpan');
     }
 
     /**
@@ -37,7 +53,11 @@ class JadwalController extends Controller
      */
     public function show(Jadwal $jadwal)
     {
-        //
+    $mataKuliah = MataKuliah::all();
+    $dosen = Dosen::all();
+    $sesi = Sesi::all();
+    return view('jadwal.edit', compact('jadwal', 'mataKuliah', 'dosen', 'sesi'));
+
     }
 
     /**
@@ -45,7 +65,9 @@ class JadwalController extends Controller
      */
     public function edit(Jadwal $jadwal)
     {
-        //
+         $jadwal = Jadwal::findOrFail($jadwal);
+        // dd($fakultas);
+        return view('jadwal.edit', compact('jadwal'));
     }
 
     /**
@@ -53,7 +75,19 @@ class JadwalController extends Controller
      */
     public function update(Request $request, Jadwal $jadwal)
     {
-        //
+         $input = $request->validate([
+            'tahun_akademik' => 'required',
+            'kode_smt' => 'required',
+            'kelas' => 'required',
+            'mataKuliah_id' => 'required',
+            'dosen_id' => 'required',
+            'sesi_id' => 'required'
+        ]);
+        $jadwal->update($input);
+
+        // redirect ke route fakultas.index
+        return redirect()->route('jadwal.index')
+                         ->with('success', 'Jadwal berhasil diubah');
     }
 
     /**
@@ -61,6 +95,8 @@ class JadwalController extends Controller
      */
     public function destroy(Jadwal $jadwal)
     {
-        //
+        $jadwal = Jadwal::findOrFail($jadwal);
+        $jadwal->delete();
+        return redirect()->route('jadwal.index')->with('success', 'Jadwal berhasil di hapus.');  
     }
 }

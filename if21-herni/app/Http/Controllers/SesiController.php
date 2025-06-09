@@ -32,8 +32,7 @@ class SesiController extends Controller
     public function store(Request $request)
     {
             $input = $request->validate([
-            'id' =>'required|unique:sesi',
-            'nama' => 'required',
+             'nama' => 'required|unique:sesi',
         ]);
 
         // simpan ke tabel fakultas
@@ -71,8 +70,6 @@ class SesiController extends Controller
          $sesi = Sesi::findOrFail($sesi);
         $input = $request->validate([
            'nama' => 'required|unique:sesi',
-            'created_at' => 'required',
-            'update_at' => 'required',
         ]);
 
         // ubah data fakultas
