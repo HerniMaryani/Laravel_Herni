@@ -10,20 +10,8 @@
             "dest": "/public/build/"
         },
         {
-            "src": "/css/(.*)",
-            "dest": "/public/css/"
-        },
-        {
-            "src": "/images/(.*)",
-            "dest": "/public/images/"
-        },
-        {
-            "src": "/js/(.*)",
-            "dest": "/public/js/"
-        },
-        {
-            "src": "/vendors/(.*)",
-            "dest": "/public/vendors/"
+            "src": "/dist/(.*)",
+            "dest": "/public/dist/"
         },
         {
             "src": "/(.*)",
