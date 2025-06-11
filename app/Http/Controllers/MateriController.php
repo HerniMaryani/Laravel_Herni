@@ -24,8 +24,7 @@ class MateriController extends Controller
     public function create()
     {
     
-     return redirect()->route('materi.index')
-                         ->with('success', 'Jadwal berhasil disimpan');
+      return view('materi.create');
 
     }
 
