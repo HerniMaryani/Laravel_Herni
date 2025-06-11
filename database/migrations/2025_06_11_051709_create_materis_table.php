@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('materis', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
-            $table->uuid('mata_kuliah_id');
-            $table->foreign('mata_kuliah_id')->references('id')->on('mata_kuliahs')->onDelete('restrict')->onUpdate('restrict');
+            $table->uuid('matakuliah_id');
+            $table->foreign('matakuliah_id')->references('id')->on('mata_kuliahs')->onDelete('restrict')->onUpdate('restrict');
             $table->uuid('dosen_id');
             $table->foreign('dosen_id')->references('id')->on('dosens')->onDelete('restrict')->onUpdate('restrict');
             $table->bigInteger('pertemuan');
