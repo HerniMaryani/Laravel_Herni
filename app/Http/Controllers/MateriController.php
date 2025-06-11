@@ -24,7 +24,10 @@ class MateriController extends Controller
     public function create()
     {
     
-      return view('materi.create');
+    
+      $mataKuliah = MataKuliah::all(); 
+      $dosen = Dosen::all();
+        return view('materi.create', compact('mataKuliah','dosen'));
 
     }
 
