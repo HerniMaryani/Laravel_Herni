@@ -31,9 +31,9 @@
                         </select>
                       </div>
                      <div class="mb-3">
-                        <label for="mataKuliah_id" class="form-label">Mata Kuliah</label>
-                        <select name="mataKuliah_id" class="form-control">
-                          @foreach ($mataKuliah as $item)
+                        <label for="prodi_id" class="form-label">Program Studi</label>
+                        <select name="prodi_id" class="form-control">
+                          @foreach ($prodi as $item)
                             <option value="{{ $item->id }}"> {{ $item->nama }} </option>
                           @endforeach
                         </select>
