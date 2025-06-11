@@ -66,7 +66,6 @@ class JadwalController extends Controller
     public function edit(Jadwal $jadwal)
     {
          $jadwal = Jadwal::findOrFail($jadwal);
-        // dd($fakultas);
         return view('jadwal.edit', compact('jadwal'));
     }
 
@@ -84,8 +83,6 @@ class JadwalController extends Controller
             'sesi_id' => 'required'
         ]);
         $jadwal->update($input);
-
-        // redirect ke route fakultas.index
         return redirect()->route('jadwal.index')
                          ->with('success', 'Jadwal berhasil diubah');
     }

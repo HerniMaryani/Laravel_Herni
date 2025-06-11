@@ -23,7 +23,7 @@ class MataKuliahController extends Controller
      */
     public function create()
     {
-         $prodi = Prodi::all();
+        $prodi = Prodi::all();
         return view('mataKuliah.create', compact('prodi'));
     }
 
@@ -49,7 +49,7 @@ class MataKuliahController extends Controller
      */
     public function show(MataKuliah $mataKuliah)
     {
-         $prodi = Prodi::all();
+        $prodi = Prodi::all();
         return view('mataKuliah.edit', compact('mataKuliah', 'prodi'));
     }
 
