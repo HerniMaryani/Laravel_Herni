@@ -36,6 +36,9 @@
                               </option>
                           @endforeach
                         </select>
+                        @error('prodi_id')
+                          <div class="text-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                      <div class="mb-3">
                         <label for="dosen_id" class="form-label">Dosen</label>

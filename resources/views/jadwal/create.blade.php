@@ -39,7 +39,7 @@
                         </select>
                       </div>
                      <div class="mb-3">
-                        <label for="sesi_id" class="form-label">Sesi/label>
+                        <label for="sesi_id" class="form-label">Sesi</label>
                         <select name="sesi_id" class="form-control">
                           @foreach ($sesi as $item)
                             <option value="{{ $item->id }}"> {{ $item->nama }} </option>
