@@ -22,21 +22,27 @@
                         <label for="nidk" class="form-label">NIDK</label>
                         <input type="text" class="form-control" name="nidk" value="{{ old('nidk') ? old('nidk') : $dosen->nidk }}">
                       </div>
-                     <div class="mb-3">
-                        <label for="fakultas_id" class="form-label">Fakultas</label>
+                      <div class="mb-3">
+                        <label for="fakultas_id" class="form-label">Fakultas/label>
                         <select name="fakultas_id" class="form-control">
                           @foreach ($fakultas as $item)
-                            <option value="{{ $item->id }}"> {{ $item->nama }} </option>
+                            <option value="{{ $item->id }}" {{ old('fakultas_id') == $item->id ? "selected" : null }}> {{ $item->nama }} </option>
                           @endforeach
                         </select>
+                        @error('fakultas_id')
+                          <div class="text-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                      <div class="mb-3">
-                        <label for="prodi_id" class="form-label">Prodi</label>
+                        <label for="prodi_id" class="form-label">Program Studi</label>
                         <select name="prodi_id" class="form-control">
                           @foreach ($prodi as $item)
-                            <option value="{{ $item->id }}"> {{ $item->nama }} </option>
+                            <option value="{{ $item->id }}" {{ old('prodi_id') == $item->id ? "selected" : null }}> {{ $item->nama }} </option>
                           @endforeach
                         </select>
+                        @error('prodi_id')
+                          <div class="text-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                     <!--end::Body-->
