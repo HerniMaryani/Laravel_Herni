@@ -16,11 +16,11 @@
                     <div class="card-body">
                       <div class="mb-3">
                         <label for="nama" class="form-label">Nama Dosen</label>
-                        <input type="text" class="form-control" name="nama" value="{{ old('nama') ? old('nama') : $item->nama }}">
+                        <input type="text" class="form-control" name="nama">
                       </div>
                       <div class="mb-3">
                         <label for="nidk" class="form-label">NIDK</label>
-                        <input type="text" class="form-control" name="nidk" value="{{ old('nidk') ? old('nidk') : $item->nidk }}">
+                        <input type="text" class="form-control" name="nidk">
                       </div>
                       <div class="mb-3">
                         <label for="fakultas_id" class="form-label">Fakultas</label>
