@@ -237,9 +237,10 @@
                 <!--begin::Menu Footer-->
                 <li class="user-footer">
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
-                  <a href="#" class="btn btn-default btn-flat float-end">Sign out</a>
                 <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
+                <form method="POST" action="{{ route('logout') }}" 
+                calass="d-inline btn btn-default btn-flat float-end">
+                  
                     @csrf
 
                     <a href="route('logout')"
