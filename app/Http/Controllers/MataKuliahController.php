@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dosen;
 use App\Models\MataKuliah;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
@@ -58,8 +59,9 @@ class MataKuliahController extends Controller
      */
     public function edit(MataKuliah $mataKuliah)
     {
-        $mataKuliah = MataKuliah::findOrFail($mataKuliah);
-        return view('matakuliah.edit', compact('mataKuliah'));
+        $mataKuliah = MataKuliah::all();
+        $dosen = Dosen::all();
+        return view('materi.edit', compact('materi', 'mataKuliah', 'dosen'));
     }
 
     /**

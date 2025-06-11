@@ -65,7 +65,7 @@ class JadwalController extends Controller
      */
     public function edit(Jadwal $jadwal)
     {
-         $jadwal = Jadwal::findOrFail($jadwal);
+        $jadwal = Jadwal::findOrFail($jadwal);
         return view('jadwal.edit', compact('jadwal'));
     }
 

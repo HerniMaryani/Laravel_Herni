@@ -23,7 +23,7 @@ class MateriController extends Controller
      */
     public function create()
     {
-    $mata_kuliah = MataKuliah::all();
+    $matakuliah = MataKuliah::all();
     $dosen = Dosen::all();
     return view('materi.create', compact('mata_kuliah', 'dosen'));
 
@@ -87,7 +87,7 @@ class MateriController extends Controller
             'pokok_bahasan' => 'required',
             'file_materi' => 'required|file|mimes:pdf|max:2048',
         ]);
-         Materi::update($input);
+         $materi->update($input);
         return redirect()->route('materi.index')->with('success', 'Materi Berhasil ditambah.');
     }
 
