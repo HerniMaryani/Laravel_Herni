@@ -27,27 +27,21 @@
                         <label for="file_materi" class="form-label">File Materi</label>
                         <input type="text" class="form-control" name="file_materi">
                       </div>
-                       <div class="mb-3">
-                        <label for="mata_kuliah_id" class="form-label">Mata Kuliah</label>
-                        <select name="mata_kuliah_id" class="form-control">
+                     <div class="mb-3">
+                        <label for="mataKuliah_id" class="form-label">Mata Kuliah</label>
+                        <select name="mataKuliah_id" class="form-control">
                           @foreach ($mataKuliah as $item)
-                            <option value="{{ $item->id }}" {{old('mata_kuliah_id) == $item->id? "selected" : null }}> {{ $item->nama }} </option>
+                            <option value="{{ $item->id }}"> {{ $item->nama }} </option>
                           @endforeach
                         </select>
-                        @error('mata_kuliah_id')
-                          <div class="text-danger">{{ $message }}</div>
-                        @enderror
                       </div>
-                      <div class="mb-3">
+                     <div class="mb-3">
                         <label for="dosen_id" class="form-label">Dosen</label>
                         <select name="dosen_id" class="form-control">
                           @foreach ($dosen as $item)
-                            <option value="{{ $item->id }}" {{old('dosen_id') == $item->id? "selected" : null }}> {{ $item->nama }} </option>
+                            <option value="{{ $item->id }}"> {{ $item->nama }} </option>
                           @endforeach
                         </select>
-                        @error('dosen_id')
-                          <div class="text-danger">{{ $message }}</div>
-                        @enderror
                       </div>
                     </div>
                     <!--end::Body-->
