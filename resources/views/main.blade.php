@@ -242,11 +242,12 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
+                    <a href="route('logout')"
                             onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                                        this.closest('form').submit();"
+                                        class="btn btn-default btn-flat float-end">
                         {{ __('Log Out') }}
-                    </x-responsive-nav-link>
+                    </a>
                 </form>
                 </li>
                 <!--end::Menu Footer-->
