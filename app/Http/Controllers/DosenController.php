@@ -23,8 +23,9 @@ class DosenController extends Controller
      */
     public function create()
     {
-        
-        return view('dosen.create', compact('dosen'));
+        $fakultas = Fakultas::all();
+        $dosen = Dosen::all();
+        return view('dosen.create', compact('fakultas','dosen'));
     }
 
     /**
