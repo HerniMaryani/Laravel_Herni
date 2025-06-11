@@ -34,10 +34,10 @@ class MateriController extends Controller
     public function store(Request $request)
     {
          $input = $request->validate([
-            'mata_kuliah_id' => 'required',
+            'mataKuliah_id' => 'required',
             'pertemuan' => ['required',
                  Rule::unique('materi')->where(function ($query) use ($request) {
-                return $query->where('mata_kuliah_id', $request->mata_kuliah_id);
+                return $query->where('mataKuliah_id', $request->mata_kuliah_id);
         }),
     ],
             'dosen_id' => 'required',
@@ -80,7 +80,7 @@ class MateriController extends Controller
     public function update(Request $request, Materi $materi)
     {
         $input = $request->validate([
-            'mata_kuliah_id' => 'required',
+            'mataKuliah_id' => 'required',
             'dosen_id' => 'required',
             'pertemuan' => 'required',
             'pokok_bahasan' => 'required',
