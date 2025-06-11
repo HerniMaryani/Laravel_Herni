@@ -23,7 +23,8 @@ class DosenController extends Controller
      */
     public function create()
     {
-         return view('dosen.create');
+         $dosen = new Dosen(); 
+        return view('dosen.create', compact('dosen'));
     }
 
     /**
