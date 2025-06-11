@@ -239,7 +239,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}" 
-                calass="d-inline btn btn-default btn-flat float-end">
+                calass="d-inline">
                   
                     @csrf
 
