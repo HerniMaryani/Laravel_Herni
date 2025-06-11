@@ -23,9 +23,12 @@
                         <label for="pokok_bahasan" class="form-label">Pokok Bahasan</label>
                         <input type="text" class="form-control" name="pokok_bahasan">
                       </div>
-                        <div class="mb-3">
-                        <label for="file_materi" class="form-label">File Materi</label>
-                        <input type="text" class="form-control" name="file_materi">
+                         <div class="mb-3">
+                        <label for="file" class="form-label">File</label>
+                        <input type="file" class="form-control" name="file">
+                        @error('file')
+                          <div class="text-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                      <div class="mb-3">
                         <label for="mataKuliah_id" class="form-label">Mata Kuliah</label>
