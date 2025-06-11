@@ -34,7 +34,7 @@
                         <label for="mataKuliah_id" class="form-label">Mata Kuliah</label>
                         <select name="mataKuliah_id" class="form-control">
                           @foreach ($mataKuliah as $item)
-                             <option value="{{ $item->id }}" {{ old('mata_kuliah_id') == $item->id ? 'selected' : '' }}>
+                             <option value="{{ $item->id }}" {{ old('mata_kuliah_id') == $item->id ? 'selected' : null }}> {{ $item->nama }}>
                                  {{ $item->nama }}
                               </option>
                           @endforeach
@@ -47,7 +47,7 @@
                         <label for="dosen_id" class="form-label">Dosen</label>
                         <select name="dosen_id" class="form-control">
                           @foreach ($dosen as $item)
-                            <option value="{{ $item->id }}" {{ old('dosen_id') == $item->id ? 'selected' : '' }}>
+                            <option value="{{ $item->id }}" {{ old('dosen_id') == $item->id ? 'selected' :: null }}> {{ $item->nama }}>
                               {{ $item->nama }}
                             </option>
                           @endforeach
