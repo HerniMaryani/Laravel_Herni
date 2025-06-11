@@ -220,7 +220,6 @@
                   />
                   <p>
                     {{ Auth::user()->name }} - {{ Auth::user()->email }}
-                    <small>Member since Nov. 2023</small>
                   </p>
                 </li>
                 <!--end::User Image-->
@@ -239,6 +238,16 @@
                 <li class="user-footer">
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                   <a href="#" class="btn btn-default btn-flat float-end">Sign out</a>
+                <!-- Authentication -->
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-responsive-nav-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-responsive-nav-link>
+                </form>
                 </li>
                 <!--end::Menu Footer-->
               </ul>
