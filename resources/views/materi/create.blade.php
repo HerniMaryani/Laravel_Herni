@@ -15,43 +15,50 @@
                     @csrf
                     <!--begin::Body-->
                     <div class="card-body">
-                      <div class="mb-3">
-                        <label for="pertemuan" class="form-label"> Pertemuan</label>
-                        <input type="text" class="form-control" name="pertemuan">
-                      </div>
                        <div class="mb-3">
-                        <label for="pokok_bahasan" class="form-label">Pokok Bahasan</label>
-                        <input type="text" class="form-control" name="pokok_bahasan">
-                      </div>
-                         <div class="mb-3">
-                        <label for="file" class="form-label">File</label>
-                        <input type="file" class="form-control" name="file">
-                        @error('file')
+                        <label for="matakuliah_id" class="form-label">Mata Kuliah</label>
+                        <select name="matakuliah_id" class="form-control">
+                          @foreach ($matakuliah as $item)
+                            <option value="{{ $item->id }}" {{ old('matakuliah_id') == $item->id ? "selected" : null }}> {{ $item->nama }} </option>
+                          @endforeach
+                        </select>
+                        @error('matakuliah_id')
                           <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
                      <div class="mb-3">
-                        <label for="mataKuliah_id" class="form-label">Mata Kuliah</label>
-                        <select name="mataKuliah_id" class="form-control">
-                          @foreach ($mataKuliah as $item)
-                             <option value="{{ $item->id }}" {{ old('mata_kuliah_id') == $item->id ? 'selected' : null }}> {{ $item->nama }}>
-                                 {{ $item->nama }}
-                              </option>
+                        <label for="dosenid" class="form-label">Dosen</label>
+                        <select name="dosenid" class="form-control">
+                          @foreach ($users as $item)
+                          <option value="{{ $item->id }}" {{ old('dosens') == $item->id ? "selected" : null }}>
+                          {{ $item->name ?? 'None' }}
+                          </option>
                           @endforeach
                         </select>
-                        @error('prodi_id')
+                        @error('dosenid')
                           <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
-                     <div class="mb-3">
-                        <label for="dosen_id" class="form-label">Dosen</label>
-                        <select name="dosen_id" class="form-control">
-                          @foreach ($dosen as $item)
-                            <option value="{{ $item->id }}" {{ old('dosen_id') == $item->id ? 'selected' :: null }}> {{ $item->nama }}>
-                              {{ $item->nama }}
-                            </option>
-                          @endforeach
-                        </select>
+                        <div class="mb-3">
+                            <label for="pertemuan" class="form-label">Pertemuan</label>
+                            <input type="number" class="form-control" name="pertemuan" value="{{ old('pertemuan') }}">
+                            @error('pertemuan')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="pokok_bahasan" class="form-label">Pokok Bahasan</label>
+                            <input type="text" class="form-control" name="pokok_bahasan" value="{{ old('pokok_bahasan') }}">
+                            @error('pokokbahasan')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                        <label for="file_materi" class="form-label">File Materi</label>
+                        <input type="file" class="form-control" name="file_materi">
+                        @error('filemateri')
+                          <div class="text-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                     <!--end::Body-->

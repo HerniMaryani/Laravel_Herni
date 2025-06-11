@@ -6,6 +6,7 @@ use App\Models\Dosen;
 use App\Models\MataKuliah;
 use App\Models\Materi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class MateriController extends Controller
 {
@@ -36,26 +37,45 @@ class MateriController extends Controller
      */
     public function store(Request $request)
     {
-         $input = $request->validate([
-            'mataKuliah_id' => 'required',
-            'pertemuan' => ['required',
-                 Rule::unique('materi')->where(function ($query) use ($request) {
-                return $query->where('mataKuliah_id', $request->mata_kuliah_id);
-        }),
-    ],
-            'dosen_id' => 'required',
-            'pokok_bahasan' => 'required',
-            'file_materi' => 'required|file|mimes:pdf|max:2048',
-        ]);
-         if ($request->hasFile('file_materi')) {
-            $file = $request->file('file_materi');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('file', $filename);
+        $validated = $request->validate([
+        'matakuliah_id' => 'required|integer',
+        'dosen_id' => 'required|integer',
+        'pertemuan' => 'required|integer',
+        'pokok_bahasan' => 'required|string',
+        'file_materi' => 'required|file|mimes:pdf,doc,docx,ppt,pptx|max:2048',
+    ]);
 
-            $input['file_materi'] = $filename;
+    if ($request->hasFile('file_materi')) {
+        try {
+            $file = $request->file('file_materi');
+            $response = Http::asMultipart()->post(
+                'https://api.cloudinary.com/v1_1/' . env('CLOUDINARY_CLOUD_NAME') . '/raw/upload',
+                [
+                    [
+                        'name'     => 'file',
+                        'contents' => fopen($file->getRealPath(), 'r'),
+                        'filename' => $file->getClientOriginalName(),
+                    ],
+                    [
+                        'name'     => 'upload_preset',
+                        'contents' => env('CLOUDINARY_UPLOAD_PRESET'),
+                    ],
+                ]
+            );
+
+            $result = $response->json();
+            if (isset($result['secure_url'])) {
+                $validated['file_materi'] = $result['secure_url'];
+            } else {
+                return back()->withErrors(['file_materi' => 'Cloudinary upload error: ' . ($result['error']['message'] ?? 'Unknown error')]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['file_materi' => 'Cloudinary error: ' . $e->getMessage()]);
         }
-         Materi::create($input);
-        return redirect()->route('materi.index')->with('success', 'Materi Berhasil ditambah.');
+    }
+
+        Materi::create($validated);
+        return redirect()->route('materi.index')->with('success', 'Materi created successfully.');
     }
 
     /**
@@ -82,14 +102,43 @@ class MateriController extends Controller
      */
     public function update(Request $request, Materi $materi)
     {
-        $input = $request->validate([
-            'mataKuliah_id' => 'required',
-            'dosen_id' => 'required',
-            'pertemuan' => 'required',
-            'pokok_bahasan' => 'required',
-            'file_materi' => 'required|file|mimes:pdf|max:2048',
-        ]);
-         $materi->update($input);
+        $validated = $request->validate([
+        'matakuliah_id' => 'required|integer',
+        'dosen_id' => 'required|integer',
+        'pertemuan' => 'required|integer',
+        'pokok_bahasan' => 'required|string',
+        'file_materi' => 'required|file|mimes:pdf,doc,docx,ppt,pptx|max:2048',
+    ]);
+
+    if ($request->hasFile('file_materi')) {
+        try {
+            $file = $request->file('file_materi');
+            $response = Http::asMultipart()->post(
+                'https://api.cloudinary.com/v1_1/' . env('CLOUDINARY_CLOUD_NAME') . '/raw/upload',
+                [
+                    [
+                        'name'     => 'file',
+                        'contents' => fopen($file->getRealPath(), 'r'),
+                        'filename' => $file->getClientOriginalName(),
+                    ],
+                    [
+                        'name'     => 'upload_preset',
+                        'contents' => env('CLOUDINARY_UPLOAD_PRESET'),
+                    ],
+                ]
+            );
+
+            $result = $response->json();
+            if (isset($result['secure_url'])) {
+                $validated['file_materi'] = $result['secure_url'];
+            } else {
+                return back()->withErrors(['file_materi' => 'Cloudinary upload error: ' . ($result['error']['message'] ?? 'Unknown error')]);
+            }
+        } catch (\Exception $e) {
+            return back()->withErrors(['file_materi' => 'Cloudinary error: ' . $e->getMessage()]);
+        }
+    }
+        $materi->update($validated);
         return redirect()->route('materi.index')->with('success', 'Materi Berhasil ditambah.');
     }
 
