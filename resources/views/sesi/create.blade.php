@@ -19,17 +19,7 @@
                         <label for="nama" class="form-label">Nama sesi</label>
                         <input type="text" class="form-control" name="nama">
                       </div>
-                      <div class="mb-3">
-                        <label for="prodi_id" class="form-label">Program Studi</label>
-                        <select name="prodi_id" class="form-control">
-                          @foreach ($prodi as $item)
-                            <option value="{{ $item->id }}" {{ old('prodi_id') == $item->id ? "selected" : null }}> {{ $item->nama }} </option>
-                          @endforeach
-                        </select>
-                        @error('prodi_id')
-                          <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                      </div>
+
                     </div>
                     <!--end::Body-->
                     <!--begin::Footer-->
