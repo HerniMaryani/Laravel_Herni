@@ -23,9 +23,9 @@ class MateriController extends Controller
      */
     public function create()
     {
-    $matakuliah = MataKuliah::all();
-    $dosen = Dosen::all();
-    return view('materi.create', compact('matakuliah', 'dosen'));
+    
+     return redirect()->route('materi.index')
+                         ->with('success', 'Jadwal berhasil disimpan');
 
     }
 
